@@ -1,0 +1,56 @@
+{% extends 'homesapp/base.html' %}
+
+{% block body %}
+
+<html>
+  <head>
+
+  </head>
+  <body>
+    <div class="col-md-2">
+    </div><!--First colum empty spacing-->
+    <div class="col-md-8">
+      <h3>Properties in {{location.location_name}}</h3>
+{% for place in location.property_set.all %}
+      <div class="for loop">
+        {{ place.property_name }}
+      </div>
+      <div class="col-md-4">
+        <img src="{{place.image_url}}" height="200" width="200">
+      </div> <!--Property Brief Detail-->
+      <div class="col-md-6">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><label><b>AREA sqft</b></label></td>
+              <td>{{place.area}}</td>
+            </tr>
+
+            <tr>
+              <td><label><b>PRICE</b></label></td>
+              <td>{{place.price}}</td>
+            </tr>
+
+            <tr>
+              <td><label><b>FLOORS</b></label></td>
+              <td>{{place.floor}}</td>
+            </tr>
+
+            <tr>
+              <td><label><b>ADDRESS</b></label></td>
+              <td>{{place.postadd}}</td>
+            </tr>
+            <tr>
+              
+              <td><a class="btn btn-primary" href="/homesapp/{{location.id}}/{{place.id}}">View Details</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!--Second colum-->
+    {% endfor %}
+
+  </body>
+</html>
+
+{% endblock %}
